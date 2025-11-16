@@ -1,0 +1,8 @@
+paths:
+  data_file: "sample.bin"
+  model_param: "model/pointnet.param"
+  model_bin: "model/pointnet.bin"
+
+model_names:
+  input_layer: "input_0"
+  output_layer: "output_0"

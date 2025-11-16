@@ -1,0 +1,61 @@
+7767517
+59 61
+Input            input_0                  0 1 input_0
+Split            splitncnn_input0         1 2 input_0 input_0_splitncnn_0 input_0_splitncnn_1
+MemoryData       146                      0 1 146 0=3 1=3
+MemoryData       192                      0 1 192 0=64 1=64
+Convolution1D    Conv_3                   1 1 input_0_splitncnn_1 215 0=64 1=1 2=1 3=1 4=0 14=0 5=1 6=192
+ReLU             Relu_4                   1 1 215 117
+Convolution1D    Conv_5                   1 1 117 218 0=128 1=1 2=1 3=1 4=0 14=0 5=1 6=8192
+ReLU             Relu_6                   1 1 218 120
+Convolution1D    Conv_7                   1 1 120 221 0=1024 1=1 2=1 3=1 4=0 14=0 5=1 6=131072
+ReLU             Relu_8                   1 1 221 123
+Pooling1D        MaxPool_9                1 1 123 124 0=0 1=128 2=128 3=0 13=0 5=1
+Flatten          Flatten_10               1 1 124 125
+InnerProduct     Gemm_11                  1 1 125 126 0=512 1=1 2=524288
+BatchNorm        BatchNormalization_12    1 1 126 127 0=512
+ReLU             Relu_13                  1 1 127 128
+InnerProduct     Gemm_14                  1 1 128 129 0=256 1=1 2=131072
+BatchNorm        BatchNormalization_15    1 1 129 130 0=256
+ReLU             Relu_16                  1 1 130 131
+InnerProduct     Gemm_27                  1 1 131 148 0=9 1=1 2=2304
+Reshape          Reshape_29               1 1 148 150 0=3 1=3
+BinaryOp         Add_30                   2 1 150 146 151 0=0
+Permute          Transpose_31             1 1 input_0_splitncnn_0 152 0=1
+Gemm             MatMul_32                2 1 152 151 153
+Permute          Transpose_33             1 1 153 154 0=1
+Convolution1D    Conv_34                  1 1 154 224 0=64 1=1 2=1 3=1 4=0 14=0 5=1 6=192
+ReLU             Relu_35                  1 1 224 157
+Split            splitncnn_0              1 2 157 157_splitncnn_0 157_splitncnn_1
+Convolution1D    Conv_39                  1 1 157_splitncnn_1 227 0=64 1=1 2=1 3=1 4=0 14=0 5=1 6=4096
+ReLU             Relu_40                  1 1 227 163
+Convolution1D    Conv_41                  1 1 163 230 0=128 1=1 2=1 3=1 4=0 14=0 5=1 6=8192
+ReLU             Relu_42                  1 1 230 166
+Convolution1D    Conv_43                  1 1 166 233 0=1024 1=1 2=1 3=1 4=0 14=0 5=1 6=131072
+ReLU             Relu_44                  1 1 233 169
+Pooling1D        MaxPool_45               1 1 169 170 0=0 1=128 2=128 3=0 13=0 5=1
+Flatten          Flatten_46               1 1 170 171
+InnerProduct     Gemm_47                  1 1 171 172 0=512 1=1 2=524288
+BatchNorm        BatchNormalization_48    1 1 172 173 0=512
+ReLU             Relu_49                  1 1 173 174
+InnerProduct     Gemm_50                  1 1 174 175 0=256 1=1 2=131072
+BatchNorm        BatchNormalization_51    1 1 175 176 0=256
+ReLU             Relu_52                  1 1 176 177
+InnerProduct     Gemm_63                  1 1 177 194 0=4096 1=1 2=1048576
+Reshape          Reshape_65               1 1 194 196 0=64 1=64
+BinaryOp         Add_66                   2 1 196 192 197 0=0
+Permute          Transpose_67             1 1 157_splitncnn_0 198 0=1
+Gemm             MatMul_68                2 1 198 197 199
+Permute          Transpose_69             1 1 199 200 0=1
+Convolution1D    Conv_70                  1 1 200 236 0=128 1=1 2=1 3=1 4=0 14=0 5=1 6=8192
+ReLU             Relu_71                  1 1 236 203
+Convolution1D    Conv_72                  1 1 203 239 0=1024 1=1 2=1 3=1 4=0 14=0 5=1 6=131072
+Pooling1D        MaxPool_73               1 1 239 206 0=0 1=128 2=128 3=0 13=0 5=1
+Flatten          Flatten_74               1 1 206 207
+InnerProduct     Gemm_75                  1 1 207 208 0=512 1=1 2=524288
+BatchNorm        BatchNormalization_76    1 1 208 209 0=512
+ReLU             Relu_77                  1 1 209 210
+InnerProduct     Gemm_78                  1 1 210 211 0=256 1=1 2=131072
+BatchNorm        BatchNormalization_79    1 1 211 212 0=256
+ReLU             Relu_80                  1 1 212 213
+InnerProduct     Gemm_81                  1 1 213 output_0 0=4 1=1 2=1024
